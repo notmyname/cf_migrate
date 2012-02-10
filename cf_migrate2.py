@@ -30,7 +30,11 @@ new_conn = client.Connection(new_auth_endpoint, new_account_username,
             new_account_apikey, snet=NEW_SNET)
 
 old_account_headers, old_listing = old_conn.get_account(full_listing=True)
-new_conn.post_account(old_account_headers)
+headers_to_set = {}
+for k in old_account_headers:
+    if k.startswith('x-account-meta-'):
+        headers_to_set[k] = old_account_headers[k]
+new_conn.post_account(headers_to_set)
 
 all_old_objects = []
 for container_info in old_listing:
