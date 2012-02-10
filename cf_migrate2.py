@@ -2,6 +2,8 @@
 
 from swift.common import client
 
+import eventlet
+
 ################################
 ###### START CHANGE THESE ######
 
