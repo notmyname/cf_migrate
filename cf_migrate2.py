@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 
-from swift.common import client
-
 import eventlet
+eventlet.monkey_patch()
+
+from swift.common import client
 
 ################################
 ###### START CHANGE THESE ######
